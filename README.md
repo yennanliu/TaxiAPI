@@ -33,9 +33,11 @@ Your service should also provide `/api/reset` REST endpoint, when called will re
 
 Run the test cases in the file [basic_solution_checker.py](basic_solution_checker.py) to check whether your API works correctly
 
-#### Other endpoints
-- http://localhost:8888/api/all
 
 ```python
 python3 basic_solution_checker.py
 ```
+
+#### `Other endpoints`
+
+- http://localhost:8888/api/all

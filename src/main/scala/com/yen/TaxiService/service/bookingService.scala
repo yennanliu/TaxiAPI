@@ -27,14 +27,13 @@ class bookingService extends baseService {
 
   val cars = ListBuffer(car1, car2, car3)
 
-  override def book(carId: Int, dest: Location):Int = {
+  override def book(carId: Int, src: Location, dest: Location):Int = {
     try{
       // TODO : fix below
-      val carID = checkNearest(dest)
-      //car1.destination = destination
-      val car = cars(carId-1)
+      val carID = checkNearest(src)
+      val car = cars(carID-1)
       car.destination = dest
-      println("book ! " +  car.toString)
+      println(s"car ${car.id} is booked ! : ${car.toString}")
       car.id
     }catch{
       case e:RuntimeException => {
@@ -55,12 +54,13 @@ class bookingService extends baseService {
 
     //var res = scala.collection.mutable.Map.empty[Int,Float]
     // TODO : fix
-    var resId = 10
+    var resId = -1
     var initDist = Float.MaxValue
     for (car <- cars){
       val dist = Common.getDistance(car.source, expectedSrc)
       if (dist < initDist){
         resId = car.id
+        initDist = dist
       }
     }
     resId

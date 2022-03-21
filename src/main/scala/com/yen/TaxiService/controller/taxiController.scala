@@ -18,7 +18,7 @@ object taxiController {
         val source = request.source
         val destination = request.destination
         val toBookCarID = book_service.checkNearest(source)
-        book_service.book(toBookCarID, destination)
+        book_service.book(toBookCarID, source, destination)
     }
   }
 
