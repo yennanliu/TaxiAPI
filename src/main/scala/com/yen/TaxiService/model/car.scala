@@ -1,7 +1,7 @@
 package com.yen.TaxiService.model
 
 // TODO : optimize below
-case class Location(var locationX: Int, var locationY: Int)
+case class Location(var x: Int, var y: Int)
 case class Car(id:Int, var source:Location, var destination:Location, free:Boolean)
 
 object test extends App {

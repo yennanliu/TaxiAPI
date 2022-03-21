@@ -5,8 +5,8 @@ import com.yen.TaxiService.model.Location
 object Common {
 
   def getDistance(src:Location, dest:Location):Float = {
-    val diffX = (dest.locationX - src.locationX).abs
-    val diffY = (dest.locationY - src.locationY).abs
+    val diffX = (dest.x - src.y).abs
+    val diffY = (dest.x - src.y).abs
     diffX * diffX + diffY * diffY
   }
 }

@@ -27,17 +27,19 @@ class bookingService extends baseService {
 
   val cars = ListBuffer(car1, car2, car3)
 
-  override def book(carId: Int, dest: Location):Boolean = {
+  override def book(carId: Int, dest: Location):Int = {
     try{
       // TODO : fix below
-      // checkNearest
+      val carID = checkNearest(dest)
       //car1.destination = destination
-      cars(carId-1).destination = dest
-      true
+      val car = cars(carId-1)
+      car.destination = dest
+      println("book ! " +  car.toString)
+      car.id
     }catch{
       case e:RuntimeException => {
         e.printStackTrace()
-        false
+        0
       }
     }
   }
