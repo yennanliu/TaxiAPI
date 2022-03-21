@@ -1,5 +1,10 @@
 package com.yen.TaxiService.service
 
+import scala.collection.mutable.ListBuffer
+
+import com.yen.TaxiService.model.{Car, Location}
+import com.yen.TaxiService.common.Common
+
 /**
  *
  * You are tasked to implement a simple taxi booking system in a 2D grid world with the following criteria:
@@ -12,6 +17,54 @@ package com.yen.TaxiService.service
  *   - More than 1 car can be at the same point at any time.
  */
 
-class bookingService {
+class bookingService extends baseService {
 
+  // TODO : fix this to conf
+  // init cars
+  var car1 = Car(1, Location(0,0), Location(0,0),false)
+  var car2 = Car(2, Location(0,0), Location(0,0),false)
+  var car3 = Car(3, Location(0,0), Location(0,0),false)
+
+  val cars = ListBuffer(car1, car2, car3)
+
+  override def book(carId: Int, src: Location, dest: Location):Boolean = {
+    try{
+      // TODO : fix below
+      // checkNearest
+      //car1.destination = destination
+      cars(carId-1).destination = dest
+      true
+    }catch{
+      case e:RuntimeException => {
+        e.printStackTrace()
+        false
+      }
+    }
+  }
+
+  override def checkNearest(expectedSrc:Location):Int = {
+    // TODO : use functional way
+    // get distance from all cars with src
+    //    val res = cars.map{
+    //      car => {
+    //        val (id, val) = Common.getDistance(src, car.source)
+    //      }
+    //    }
+
+    //var res = scala.collection.mutable.Map.empty[Int,Float]
+    // TODO : fix
+    var resId = 10
+    var initDist = Float.MaxValue
+    for (car <- cars){
+      val dist = Common.getDistance(car.source, expectedSrc)
+      if (dist < initDist){
+        resId = car.id
+      }
+    }
+    resId
+  }
+
+  override def reset(): Unit = ???
+
+  override def tick(): Unit = ???
 }

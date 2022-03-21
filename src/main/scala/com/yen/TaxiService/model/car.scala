@@ -1,4 +1,13 @@
 package com.yen.TaxiService.model
 
-case class location(locationX: Int, locationY: Int)
-case class car(id:Int, source:location, destination:location, free:Boolean)
+// TODO : optimize below
+case class Location(var locationX: Int, var locationY: Int)
+case class Car(id:Int, var source:Location, var destination:Location, free:Boolean)
+
+object test extends App {
+  var car1 = Car(1, Location(0,0), Location(0,0),false)
+//  car1.destination.locationX = 1
+//  car1.destination.locationY = 2
+  car1.destination = Location(1,2)
+  println(car1)
+}

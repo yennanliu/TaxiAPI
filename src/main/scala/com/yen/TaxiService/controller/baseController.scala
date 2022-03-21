@@ -4,5 +4,4 @@ trait baseController {
   // attr
 
   // method
-
 }
