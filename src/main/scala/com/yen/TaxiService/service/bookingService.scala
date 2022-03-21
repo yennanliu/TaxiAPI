@@ -21,11 +21,11 @@ class bookingService extends baseService {
 
   // TODO : fix this to conf
   // init cars
-  var car1 = Car(1, Location(0,0), Location(0,0),false)
-  var car2 = Car(2, Location(0,0), Location(0,0),false)
-  var car3 = Car(3, Location(0,0), Location(0,0),false)
+  var car1 = Car(1, Location(0,0), Location(0,0),true)
+  var car2 = Car(2, Location(0,0), Location(0,0),true)
+  var car3 = Car(3, Location(0,0), Location(0,0),true)
 
-  val cars = ListBuffer(car1, car2, car3)
+  var cars = ListBuffer(car1, car2, car3)
 
   override def book(carId: Int, src: Location, dest: Location):Int = {
     try{
@@ -33,6 +33,8 @@ class bookingService extends baseService {
       val carID = checkNearest(src)
       val car = cars(carID-1)
       car.destination = dest
+      car.free = false
+      this.cars(carID) = car
       println(s"car ${car.id} is booked ! : ${car.toString}")
       car.id
     }catch{
@@ -58,7 +60,8 @@ class bookingService extends baseService {
     var initDist = Float.MaxValue
     for (car <- cars){
       val dist = Common.getDistance(car.source, expectedSrc)
-      if (dist < initDist){
+      println("car.id = " + car.id + " dist = " + dist)
+      if (dist < initDist && car.free == true){
         resId = car.id
         initDist = dist
       }
@@ -69,17 +72,17 @@ class bookingService extends baseService {
   override def listAll():String = {
     var res = ""
     for (car <- cars){
-      res += car.toString
+      res += car.toString + "\n"
     }
     res
   }
 
   override def reset(): Unit = {
     try{
-      var car1 = Car(1, Location(0,0), Location(0,0),false)
-      var car2 = Car(2, Location(0,0), Location(0,0),false)
-      var car3 = Car(3, Location(0,0), Location(0,0),false)
-      val cars = ListBuffer(car1, car2, car3)
+      this.car1 = Car(1, Location(0,0), Location(0,0),false)
+      this.car2 = Car(2, Location(0,0), Location(0,0),false)
+      this.car3 = Car(3, Location(0,0), Location(0,0),false)
+      this.cars = ListBuffer(this.car1, this.car2, this.car3)
       println("reset OK")
     }catch {
       case e:RuntimeException => {

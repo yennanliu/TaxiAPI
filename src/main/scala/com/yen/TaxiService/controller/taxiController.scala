@@ -22,6 +22,14 @@ object taxiController {
     }
   }
 
+  // reset
+  class resetStatus extends Controller {
+    get("/api/reset"){
+      require:Request =>
+        book_service.reset()
+    }
+  }
+
   // listAll
   class listAllCar extends Controller {
     get("/api/all"){

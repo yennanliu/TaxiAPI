@@ -11,5 +11,6 @@ class serviceApp extends HttpServer{
   override protected def configureHttp(router: HttpRouter): Unit = {
     router.add[taxiController.book]
     router.add[taxiController.listAllCar]
+    router.add[taxiController.resetStatus]
   }
 }
