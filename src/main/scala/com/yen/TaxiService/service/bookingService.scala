@@ -27,7 +27,7 @@ class bookingService extends baseService {
 
   val cars = ListBuffer(car1, car2, car3)
 
-  override def book(carId: Int, src: Location, dest: Location):Boolean = {
+  override def book(carId: Int, dest: Location):Boolean = {
     try{
       // TODO : fix below
       // checkNearest
@@ -64,7 +64,28 @@ class bookingService extends baseService {
     resId
   }
 
-  override def reset(): Unit = ???
+  override def listAll():String = {
+    var res = ""
+    for (car <- cars){
+      res += car.toString
+    }
+    res
+  }
+
+  override def reset(): Unit = {
+    try{
+      var car1 = Car(1, Location(0,0), Location(0,0),false)
+      var car2 = Car(2, Location(0,0), Location(0,0),false)
+      var car3 = Car(3, Location(0,0), Location(0,0),false)
+      val cars = ListBuffer(car1, car2, car3)
+      println("reset OK")
+    }catch {
+      case e:RuntimeException => {
+        println("reset failed")
+        e.printStackTrace()
+      }
+    }
+  }
 
   override def tick(): Unit = ???
 }
