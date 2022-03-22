@@ -73,14 +73,19 @@ class bookingService extends baseService {
         val dist = Common.getDistance(car.source, expectedSrc)
         res(car.id) = dist
 //        val tmp = (car.id, dist)
-//        println(tmp)
       }
     }
     println(">>> res = " + res.toString())
 //    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
 //    println(">>> res.toSeq.sortBy(_._1).toList(1) = " + res.toSeq.sortBy(_._1).toList(0))
-    //resId
-    res.toSeq.sortBy(_._1).toList(0)._1
+
+    // if there is car available
+    if (res.toSeq.length > 0){
+      res.toSeq.sortBy(_._1).toList(0)._1
+    }else{
+      // if no car available
+      0
+    }
   }
 
   override def listAll():String = {

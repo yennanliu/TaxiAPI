@@ -13,11 +13,8 @@ object taxiController {
   class book extends Controller {
     post("/api/book"){
       request:bookRequest =>
-        //val url = requests.url
-        //url_service.hashUrl(url)
         val source = request.source
         val destination = request.destination
-        //val toBookCarID = book_service.checkNearest(source)
         book_service.book(source, destination)
     }
   }
