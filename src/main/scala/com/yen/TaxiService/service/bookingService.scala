@@ -42,7 +42,7 @@ class bookingService extends baseService {
           tmpID
         }
         case _ => {
-          println("no valid car")
+          println("no available car")
           0
         }
       }
@@ -98,9 +98,9 @@ class bookingService extends baseService {
 
   override def reset(): Unit = {
     try{
-      this.car1 = Car(1, Location(0,0), Location(0,0),false)
-      this.car2 = Car(2, Location(0,0), Location(0,0),false)
-      this.car3 = Car(3, Location(0,0), Location(0,0),false)
+      this.car1 = Car(1, Location(0,0), Location(0,0),true)
+      this.car2 = Car(2, Location(0,0), Location(0,0),true)
+      this.car3 = Car(3, Location(0,0), Location(0,0),true)
       this.cars = ListBuffer(this.car1, this.car2, this.car3)
       println("reset OK")
     }catch {

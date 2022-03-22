@@ -42,3 +42,4 @@ python3 basic_solution_checker.py
 
 - http://localhost:8888/api/all
 - http://localhost:8888/api/reset
+- http://localhost:9990/admin
