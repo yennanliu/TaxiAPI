@@ -11,6 +11,6 @@ trait baseService {
   def book(src: Location, dest: Location):Int
   def checkNearest(src:Location):Int
   def listAll():String
-  def reset()
-  def tick()
+  def reset():Unit
+  def tick():Int
 }

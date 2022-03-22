@@ -1,8 +1,7 @@
 package com.yen.TaxiService.service
 
 import scala.collection.mutable.ListBuffer
-
-import com.yen.TaxiService.model.{Car, Location}
+import com.yen.TaxiService.model.{Car, Location, eventTime}
 import com.yen.TaxiService.common.Common
 
 /**
@@ -18,6 +17,9 @@ import com.yen.TaxiService.common.Common
  */
 
 class bookingService extends baseService {
+
+  // init time
+  var total_time = 0
 
   // TODO : fix this to conf
   // init cars
@@ -111,5 +113,8 @@ class bookingService extends baseService {
     }
   }
 
-  override def tick(): Unit = ???
+  override def tick(): Int = {
+    this.total_time += 1
+    this.total_time
+  }
 }
