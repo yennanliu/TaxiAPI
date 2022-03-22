@@ -63,27 +63,6 @@ class bookingService extends baseService {
     }else{
       0
     }
-
-//    var resId = -1
-//    var initDist = Float.MaxValue
-//    for (car <- cars){
-//      if (car.free == true){
-//        val dist = getDistance(car.source, expectedSrc)
-//        res(car.id) = dist
-////        val tmp = (car.id, dist)
-//      }
-//    }
-//    println(">>> res = " + res.toString())
-//    println(">>> res = " + res.toSeq.sortBy(_._1))
-////    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
-//
-//    // if there is car available
-//    if (res.toSeq.length > 0){
-//      res.toSeq.sortBy(_._1).toList(0)._1
-//    }else{
-//      // if no car available
-//      0
-//    }
   }
 
   override def listAll():String = {
