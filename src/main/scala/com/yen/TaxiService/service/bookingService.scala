@@ -100,9 +100,11 @@ class bookingService extends baseService {
       if (car.free == false){
         car.travelTime = this.total_time
         println(">>> getDistance(car.source, car.destination) = " + getDistance(car.source, car.destination))
-        if (car.travelTime > getDistance(car.source, car.destination)){
+        if (car.travelTime >= getDistance(car.source, car.destination)){
           car.free = true
           car.travelTime = 0
+          car.source = car.destination
+          car.destination = Location(0,0)
         }
       }
     }

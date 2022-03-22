@@ -21,8 +21,8 @@ object Common {
   def InitCars():ListBuffer[Car] = {
     // init cars
     var car1 = Car(1, Location(0,0), Location(0,0),true, 0)
-    var car2 = Car(2, Location(10,0), Location(0,0),true, 0)
-    var car3 = Car(3, Location(20,0), Location(0,0),true, 0)
+    var car2 = Car(2, Location(0,0), Location(0,0),true, 0)
+    var car3 = Car(3, Location(0,0), Location(0,0),true, 0)
 
     ListBuffer(car1, car2, car3)
   }

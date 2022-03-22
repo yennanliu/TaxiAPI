@@ -40,6 +40,6 @@ python3 basic_solution_checker.py
 
 #### `Other endpoints`
 
-- http://localhost:8888/api/all
-- http://localhost:8888/api/reset
-- http://localhost:9990/admin
+- http://localhost:8080/api/all  : list all cars status
+- http://localhost:8080/api/reset : reset all cars status
+- http://localhost:9990/admin : service admin UI

@@ -12,10 +12,14 @@ import com.yen.TaxiService.controller.taxiController
 object App extends serviceApp
 
 class serviceApp extends HttpServer{
+
+  override val defaultHttpsPort: String = ":8080"
+
   override protected def configureHttp(router: HttpRouter): Unit = {
     router.add[taxiController.book]
     router.add[taxiController.listAllCar]
     router.add[taxiController.resetStatus]
     router.add[taxiController.tickClock]
   }
+
 }
