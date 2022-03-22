@@ -57,7 +57,6 @@ class bookingService extends baseService {
     }.filter(x => x._1 > 0).sortBy(_._1)
 
     println(">>> res = " + res)
-    //println(">>> res2.sorted = " +  res.sortBy{_._1})
 
     if (res.length > 0){
       res(0)._1
