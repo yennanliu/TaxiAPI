@@ -17,8 +17,9 @@ class bookingService extends baseService {
 
   override def book(src: Location, dest: Location):bookResponse = {
     try{
-      // TODO : fix below
+      // TODO : optimize below
       val carID = checkNearest(src)
+      println(">>> carID = " + carID)
       carID match {
         case _ if carID > 0 => {
           val tmpID = carID-1
@@ -27,7 +28,7 @@ class bookingService extends baseService {
           tmpCar.free = false
           this.cars(tmpID) = tmpCar
           println(s"car ${tmpCar.id} is booked ! : ${tmpCar.toString}")
-          bookResponse(tmpID, this.total_time)
+          bookResponse(carID, this.total_time)
         }
         case _ => {
           println("no available car")
