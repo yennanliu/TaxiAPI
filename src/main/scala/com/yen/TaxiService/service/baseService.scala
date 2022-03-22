@@ -2,6 +2,10 @@ package com.yen.TaxiService.service
 
 import com.yen.TaxiService.model.{Car, Location, bookResponse}
 
+/**
+ *  controller trait
+ */
+
 trait baseService {
   // attr
 

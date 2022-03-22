@@ -6,6 +6,10 @@ import com.twitter.finagle.http.Request
 import com.yen.TaxiService.model.bookRequest
 import com.yen.TaxiService.service.bookingService
 
+/**
+ *  taxi controller
+ */
+
 object taxiController {
   val book_service = new bookingService()
 

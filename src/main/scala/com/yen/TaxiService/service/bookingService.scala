@@ -2,32 +2,18 @@ package com.yen.TaxiService.service
 
 import scala.collection.mutable.ListBuffer
 import com.yen.TaxiService.model.{Car, Location, eventTime, bookResponse}
-import com.yen.TaxiService.common.Common.getDistance
+import com.yen.TaxiService.common.Common.{getDistance, InitCars}
 
 /**
- *
- * You are tasked to implement a simple taxi booking system in a 2D grid world with the following criteria:
- *
- * - The 2D grid world consists of `x` and `y` axis that each fit in a 32 bit integer, i.e. `-2,147,483,648` to `2,147,483,647`.
- * - There are **3** cars in the system, All three cars should have id `1`, `2` and `3` respectively and initial start location is at origin `(0, 0)`. Note that you can store the car states in memory and there is no need for persistent storage for this exercise.
- * - A car travels through the grid system will require **1 time unit** to move along the `x` or `y` axis by **1 unit** (i.e. Manhattan distance). For example
- *   - Car at `(0, 0)` will reach `(0, 2)` in 2 time units.
- *   - Car at `(1, 1)` will reach `(4, 4)` in 6 time units.
- *   - More than 1 car can be at the same point at any time.
+ *  Taxi booking service
  */
 
 class bookingService extends baseService {
 
   // init time
   var total_time = 0
-
-  // TODO : fix this to conf
   // init cars
-  var car1 = Car(1, Location(0,0), Location(0,0),true, 0)
-  var car2 = Car(2, Location(10,0), Location(0,0),true, 0)
-  var car3 = Car(3, Location(20,0), Location(0,0),true, 0)
-
-  var cars = ListBuffer(car1, car2, car3)
+  var cars = InitCars()
 
   override def book(src: Location, dest: Location):bookResponse = {
     try{
@@ -65,7 +51,7 @@ class bookingService extends baseService {
     //      }
     //    }
 
-    println(">>> expectedSrc = " + expectedSrc.toString)
+    //println(">>> expectedSrc = " + expectedSrc.toString)
     var res = scala.collection.mutable.Map.empty[Int,Float]
     // TODO : fix
     var resId = -1
@@ -99,10 +85,7 @@ class bookingService extends baseService {
 
   override def reset(): Unit = {
     try{
-      this.car1 = Car(1, Location(0,0), Location(0,0),true, 0)
-      this.car2 = Car(2, Location(0,0), Location(0,0),true, 0)
-      this.car3 = Car(3, Location(0,0), Location(0,0),true, 0)
-      this.cars = ListBuffer(this.car1, this.car2, this.car3)
+      this.cars = InitCars()
       println("reset OK")
     }catch {
       case e:RuntimeException => {
@@ -130,4 +113,5 @@ class bookingService extends baseService {
     updateStatus()
     this.total_time
   }
+
 }
