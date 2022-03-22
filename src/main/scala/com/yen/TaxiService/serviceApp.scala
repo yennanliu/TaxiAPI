@@ -12,5 +12,6 @@ class serviceApp extends HttpServer{
     router.add[taxiController.book]
     router.add[taxiController.listAllCar]
     router.add[taxiController.resetStatus]
+    router.add[taxiController.tickClock]
   }
 }

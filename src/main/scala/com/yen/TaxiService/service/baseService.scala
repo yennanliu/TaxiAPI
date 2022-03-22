@@ -12,5 +12,6 @@ trait baseService {
   def checkNearest(src:Location):Int
   def listAll():String
   def reset():Unit
+  def updateStatus():Unit
   def tick():Int
 }

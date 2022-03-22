@@ -5,7 +5,7 @@ import org.scalatest.funsuite.AnyFunSuite
 class carSuite extends AnyFunSuite{
 
   test("car model init"){
-    var car1 = Car(1, Location(0,0), Location(0,0),false)
+    var car1 = Car(1, Location(0,0), Location(0,0),false, 0)
 
     assert(car1.source == Location(0,0))
     assert(car1.destination == Location(0,0))

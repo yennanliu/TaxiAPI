@@ -2,7 +2,7 @@ package com.yen.TaxiService.service
 
 import scala.collection.mutable.ListBuffer
 import com.yen.TaxiService.model.{Car, Location, eventTime}
-import com.yen.TaxiService.common.Common
+import com.yen.TaxiService.common.Common.getDistance
 
 /**
  *
@@ -23,9 +23,9 @@ class bookingService extends baseService {
 
   // TODO : fix this to conf
   // init cars
-  var car1 = Car(1, Location(0,0), Location(0,0),true)
-  var car2 = Car(2, Location(10,0), Location(0,0),true)
-  var car3 = Car(3, Location(20,0), Location(0,0),true)
+  var car1 = Car(1, Location(0,0), Location(0,0),true, 0)
+  var car2 = Car(2, Location(10,0), Location(0,0),true, 0)
+  var car3 = Car(3, Location(20,0), Location(0,0),true, 0)
 
   var cars = ListBuffer(car1, car2, car3)
 
@@ -72,14 +72,13 @@ class bookingService extends baseService {
     var initDist = Float.MaxValue
     for (car <- cars){
       if (car.free == true){
-        val dist = Common.getDistance(car.source, expectedSrc)
+        val dist = getDistance(car.source, expectedSrc)
         res(car.id) = dist
 //        val tmp = (car.id, dist)
       }
     }
     println(">>> res = " + res.toString())
 //    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
-//    println(">>> res.toSeq.sortBy(_._1).toList(1) = " + res.toSeq.sortBy(_._1).toList(0))
 
     // if there is car available
     if (res.toSeq.length > 0){
@@ -100,9 +99,9 @@ class bookingService extends baseService {
 
   override def reset(): Unit = {
     try{
-      this.car1 = Car(1, Location(0,0), Location(0,0),true)
-      this.car2 = Car(2, Location(0,0), Location(0,0),true)
-      this.car3 = Car(3, Location(0,0), Location(0,0),true)
+      this.car1 = Car(1, Location(0,0), Location(0,0),true, 0)
+      this.car2 = Car(2, Location(0,0), Location(0,0),true, 0)
+      this.car3 = Car(3, Location(0,0), Location(0,0),true, 0)
       this.cars = ListBuffer(this.car1, this.car2, this.car3)
       println("reset OK")
     }catch {
@@ -113,8 +112,21 @@ class bookingService extends baseService {
     }
   }
 
+  override def updateStatus(): Unit = {
+    for (car <- cars){
+      if (car.free == false){
+        car.travelTime = this.total_time
+        if (car.travelTime > getDistance(car.source, car.destination)){
+          car.free = true
+          car.travelTime = 0
+        }
+      }
+    }
+  }
+
   override def tick(): Int = {
     this.total_time += 1
+    updateStatus()
     this.total_time
   }
 }

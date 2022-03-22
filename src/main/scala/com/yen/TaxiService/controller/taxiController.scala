@@ -27,6 +27,14 @@ object taxiController {
     }
   }
 
+  // reset
+  class tickClock extends Controller {
+    get("/api/tick"){
+      require:Request =>
+        book_service.tick()
+    }
+  }
+
   // listAll
   class listAllCar extends Controller {
     get("/api/all"){
