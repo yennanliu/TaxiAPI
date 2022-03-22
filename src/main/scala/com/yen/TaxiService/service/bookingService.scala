@@ -1,8 +1,8 @@
 package com.yen.TaxiService.service
 
-import scala.collection.mutable.ListBuffer
-import com.yen.TaxiService.model.{Car, Location, eventTime, bookResponse}
-import com.yen.TaxiService.common.Common.{getDistance, InitCars}
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+import com.yen.TaxiService.model.{Car, Location, bookResponse, eventTime}
+import com.yen.TaxiService.common.Common.{InitCars, getDistance}
 
 /**
  *  Taxi booking service
@@ -43,36 +43,48 @@ class bookingService extends baseService {
   }
 
   override def checkNearest(expectedSrc:Location):Int = {
-    // TODO : use functional way
     // get distance from all cars with src
-    //    val res = cars.map{
-    //      car => {
-    //        val (id, val) = Common.getDistance(src, car.source)
-    //      }
-    //    }
+    var res:ListBuffer[(Int,Int)] = cars.map{
+          car => {
+            car.free match {
+              case _ if car.free == true => {
+                val dist = getDistance(car.source, expectedSrc)
+                (car.id, dist.toInt)
+              }
+              case _ => (0,0)
+            }
+          }
+    }.filter(x => x._1 > 0).sortBy(_._1)
 
-    //println(">>> expectedSrc = " + expectedSrc.toString)
-    var res = scala.collection.mutable.Map.empty[Int,Float]
-    // TODO : fix
-    var resId = -1
-    var initDist = Float.MaxValue
-    for (car <- cars){
-      if (car.free == true){
-        val dist = getDistance(car.source, expectedSrc)
-        res(car.id) = dist
-//        val tmp = (car.id, dist)
-      }
-    }
-    println(">>> res = " + res.toString())
-//    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
+    println(">>> res = " + res)
+    //println(">>> res2.sorted = " +  res.sortBy{_._1})
 
-    // if there is car available
-    if (res.toSeq.length > 0){
-      res.toSeq.sortBy(_._1).toList(0)._1
+    if (res.length > 0){
+      res(0)._1
     }else{
-      // if no car available
       0
     }
+
+//    var resId = -1
+//    var initDist = Float.MaxValue
+//    for (car <- cars){
+//      if (car.free == true){
+//        val dist = getDistance(car.source, expectedSrc)
+//        res(car.id) = dist
+////        val tmp = (car.id, dist)
+//      }
+//    }
+//    println(">>> res = " + res.toString())
+//    println(">>> res = " + res.toSeq.sortBy(_._1))
+////    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
+//
+//    // if there is car available
+//    if (res.toSeq.length > 0){
+//      res.toSeq.sortBy(_._1).toList(0)._1
+//    }else{
+//      // if no car available
+//      0
+//    }
   }
 
   override def listAll():String = {
