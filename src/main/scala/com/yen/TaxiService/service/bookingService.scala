@@ -27,20 +27,25 @@ class bookingService extends baseService {
 
   var cars = ListBuffer(car1, car2, car3)
 
-  override def book(carId: Int, src: Location, dest: Location):Int = {
+  override def book(src: Location, dest: Location):Int = {
     try{
       // TODO : fix below
       val carID = checkNearest(src)
-      if (carID < 0){
-        println("no valid car")
-        0
+      carID match {
+        case _ if carID > 0 => {
+          val tmpID = carID-1
+          val tmpCar = cars(tmpID)
+          tmpCar.destination = dest
+          tmpCar.free = false
+          this.cars(tmpID) = tmpCar
+          println(s"car ${tmpCar.id} is booked ! : ${tmpCar.toString}")
+          tmpID
+        }
+        case _ => {
+          println("no valid car")
+          0
+        }
       }
-      val car = cars(carID-1)
-      car.destination = dest
-      car.free = false
-      this.cars(carID) = car
-      println(s"car ${car.id} is booked ! : ${car.toString}")
-      car.id
     }catch{
       case e:RuntimeException => {
         e.printStackTrace()
@@ -72,8 +77,8 @@ class bookingService extends baseService {
       }
     }
     println(">>> res = " + res.toString())
-    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
-    println(">>> res.toSeq.sortBy(_._1).toList(1) = " + res.toSeq.sortBy(_._1).toList(0))
+//    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
+//    println(">>> res.toSeq.sortBy(_._1).toList(1) = " + res.toSeq.sortBy(_._1).toList(0))
     //resId
     res.toSeq.sortBy(_._1).toList(0)._1
   }

@@ -8,7 +8,7 @@ trait baseService {
   // attr
 
   // method
-  def book(carId: Int, src: Location, dest: Location):Int
+  def book(src: Location, dest: Location):Int
   def checkNearest(src:Location):Int
   def listAll():String
   def reset()
