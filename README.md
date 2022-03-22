@@ -12,8 +12,8 @@ Your system should pick the nearest available car to the customer location and r
 curl -X POST -H "Content-Type: application/json" \
     -d '{
           "source": {
-            "x": 0,
-            "y": 0
+            "x": 1,
+            "y": 1
           },
           "destination": {
             "x": 2,
@@ -41,3 +41,4 @@ python3 basic_solution_checker.py
 #### `Other endpoints`
 
 - http://localhost:8888/api/all
+- http://localhost:8888/api/reset

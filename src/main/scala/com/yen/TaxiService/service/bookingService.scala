@@ -22,8 +22,8 @@ class bookingService extends baseService {
   // TODO : fix this to conf
   // init cars
   var car1 = Car(1, Location(0,0), Location(0,0),true)
-  var car2 = Car(2, Location(0,0), Location(0,0),true)
-  var car3 = Car(3, Location(0,0), Location(0,0),true)
+  var car2 = Car(2, Location(10,0), Location(0,0),true)
+  var car3 = Car(3, Location(20,0), Location(0,0),true)
 
   var cars = ListBuffer(car1, car2, car3)
 
@@ -31,6 +31,10 @@ class bookingService extends baseService {
     try{
       // TODO : fix below
       val carID = checkNearest(src)
+      if (carID < 0){
+        println("no valid car")
+        0
+      }
       val car = cars(carID-1)
       car.destination = dest
       car.free = false
@@ -54,19 +58,24 @@ class bookingService extends baseService {
     //      }
     //    }
 
-    //var res = scala.collection.mutable.Map.empty[Int,Float]
+    println(">>> expectedSrc = " + expectedSrc.toString)
+    var res = scala.collection.mutable.Map.empty[Int,Float]
     // TODO : fix
     var resId = -1
     var initDist = Float.MaxValue
     for (car <- cars){
-      val dist = Common.getDistance(car.source, expectedSrc)
-      println("car.id = " + car.id + " dist = " + dist)
-      if (dist < initDist && car.free == true){
-        resId = car.id
-        initDist = dist
+      if (car.free == true){
+        val dist = Common.getDistance(car.source, expectedSrc)
+        res(car.id) = dist
+//        val tmp = (car.id, dist)
+//        println(tmp)
       }
     }
-    resId
+    println(">>> res = " + res.toString())
+    println(">>> res.toSeq.sortBy(_._1) = " + res.toSeq.sortBy(_._1).toString())
+    println(">>> res.toSeq.sortBy(_._1).toList(1) = " + res.toSeq.sortBy(_._1).toList(0))
+    //resId
+    res.toSeq.sortBy(_._1).toList(0)._1
   }
 
   override def listAll():String = {
