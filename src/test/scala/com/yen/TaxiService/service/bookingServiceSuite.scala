@@ -25,7 +25,6 @@ class bookingServiceSuite extends AnyFunSuite{
     assert(book_service.cars(2) ==  Car(3,Location(0,0),Location(5,5),false,0))
 
     val res4 = book_service.book(Location(0,0), Location(5,5))
-    println("res4 = " + res4)
     assert(res4 == bookResponse(0,0))
   }
 

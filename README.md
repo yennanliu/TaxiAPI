@@ -1,7 +1,60 @@
 # TaxiService
 
+## 1) File structure
+```
+├── README.md
+├── build.sbt : build file
+├── script : test py script
+├── src    : main source file
 
-## API endpoints
+
+src
+├── main
+│   └── scala
+│       └── com
+│           └── yen
+│               └── TaxiService
+│                   ├── common   : common funcs
+│                   ├── controller : service controller handles REST request
+│                   ├── dev
+│                   ├── model  : data model (case class)
+│                   ├── service  : service handles taxi booking logic
+│                   └── serviceApp.scala : main service app
+└── test
+    └── scala
+        └── com
+            └── yen
+                └── TaxiService
+                    ├── common : common funcs unit test
+                    ├── model : model unit test
+                    └── service : service unit test
+```
+
+## 2) Run
+```bash
+#---------------------------
+# method 1 : intellJ
+#---------------------------
+# build, and run via intellJ (via build.sbt)
+
+#---------------------------
+# method 2 : sbt
+#---------------------------
+sbt build
+sbt run
+
+#---------------------------
+# method 1 : javac command
+#---------------------------
+# build jar
+# run
+```
+## 3) Run test
+```bash
+sbt test
+```
+
+## 4) API endpoints
 
 #### `POST /api/book`
 
