@@ -1,14 +1,12 @@
 package com.yen.TaxiService.service
 
-import com.yen.TaxiService.model.{Car, Location}
-
-import scala.collection.mutable.ArrayBuffer
+import com.yen.TaxiService.model.{Car, Location, bookResponse}
 
 trait baseService {
   // attr
 
   // method
-  def book(src: Location, dest: Location):Int
+  def book(src: Location, dest: Location):bookResponse
   def checkNearest(src:Location):Int
   def listAll():String
   def reset():Unit

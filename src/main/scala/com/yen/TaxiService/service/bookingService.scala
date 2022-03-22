@@ -1,7 +1,7 @@
 package com.yen.TaxiService.service
 
 import scala.collection.mutable.ListBuffer
-import com.yen.TaxiService.model.{Car, Location, eventTime}
+import com.yen.TaxiService.model.{Car, Location, eventTime, bookResponse}
 import com.yen.TaxiService.common.Common.getDistance
 
 /**
@@ -29,7 +29,7 @@ class bookingService extends baseService {
 
   var cars = ListBuffer(car1, car2, car3)
 
-  override def book(src: Location, dest: Location):Int = {
+  override def book(src: Location, dest: Location):bookResponse = {
     try{
       // TODO : fix below
       val carID = checkNearest(src)
@@ -41,17 +41,17 @@ class bookingService extends baseService {
           tmpCar.free = false
           this.cars(tmpID) = tmpCar
           println(s"car ${tmpCar.id} is booked ! : ${tmpCar.toString}")
-          tmpID
+          bookResponse(tmpID, this.total_time)
         }
         case _ => {
           println("no available car")
-          0
+          bookResponse(0, this.total_time)
         }
       }
     }catch{
       case e:RuntimeException => {
         e.printStackTrace()
-        0
+        bookResponse(0, this.total_time)
       }
     }
   }
@@ -116,6 +116,7 @@ class bookingService extends baseService {
     for (car <- cars){
       if (car.free == false){
         car.travelTime = this.total_time
+        println(">>> getDistance(car.source, car.destination) = " + getDistance(car.source, car.destination))
         if (car.travelTime > getDistance(car.source, car.destination)){
           car.free = true
           car.travelTime = 0
