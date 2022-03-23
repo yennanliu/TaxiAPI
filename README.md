@@ -12,12 +12,11 @@
 
 | API | Type | Purpose | Example cmd | Comment|
 | ----- | -------- | ---- | ----- | ---- |
-| `POST /api/book` | POST | book a free taxi |cmd | |
-| `POST /api/tick` | POST | move 1 time unit |`curl http://localhost:8080/api/tick` | |
-| `POST /api/book` | POST | book a free taxi |cmd | |
-| `POST /api/book` | POST | book a free taxi |cmd | |
-|`POST /api/book` | POST | book a free taxi |cmd | |
-|`POST /api/book` | POST | book a free taxi |cmd | |
+| `POST /api/book` | POST | book a free taxi |please check `API endpoints Details` below ||
+| `POST /api/tick` | POST | move 1 time unit forward|`curl http://localhost:8080/api/tick` | |
+| `PUT /api/reset` | PUT | reset taxi booking status|`curl http://localhost:8080/api/reset` | |
+| `PUT /api/all` | PUT |show all taxi status |`curl http://localhost:8080/api/all` | |
+| `PUT /admin` | PUT | api admin UI|`http://localhost:9990/admin` | |
 
 ## 1) File structure
 
@@ -133,7 +132,6 @@ python3 basic_solution_checker.py
 #### 4-4) `Other endpoints`
 
 - http://localhost:8080/api/all  : list all cars status
-- http://localhost:8080/api/reset : reset all cars status
 - http://localhost:9990/admin : service admin UI
 
 </details>
