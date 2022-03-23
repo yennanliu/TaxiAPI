@@ -1,6 +1,6 @@
 name := "TaxiService"
 
-organization := "yen.com"
+organization := "com.yen"
 
 version := "1.0"
 
@@ -18,14 +18,9 @@ libraryDependencies ++= Seq(
 
   // time
   "joda-time" % "joda-time" % "2.9.9",
-  "org.slf4j" % "slf4j-nop" % "1.6.4",
 
   // scalatest
   "org.scalatest" %% "scalatest" % "3.1.1" % "test",
-
-  // apache
-  "org.apache.commons" % "commons-lang3" % "3.4",
-  "org.apache.httpcomponents" % "httpclient" % "4.5.2",
 
   // finatra
   "com.twitter" %% "finatra-http" % versions.finatra,
@@ -39,3 +34,9 @@ libraryDependencies ++= Seq(
 )
 
 conflictManager := ConflictManager.latestRevision
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs@_*) => MergeStrategy.discard
+  case "reference.conf" => MergeStrategy.concat
+  case x => MergeStrategy.first
+}

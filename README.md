@@ -16,7 +16,6 @@ src
 │               └── TaxiService
 │                   ├── common   : common funcs
 │                   ├── controller : service controller handles REST request
-│                   ├── dev
 │                   ├── model  : data model (case class)
 │                   ├── service  : service handles taxi booking logic
 │                   └── serviceApp.scala : main service app
@@ -44,11 +43,16 @@ sbt build
 sbt run
 
 #---------------------------
-# method 1 : javac command
+# method 3 : java cmd
 #---------------------------
-# build jar
+# compile
+sbt assembly
 # run
+java -cp \
+target/scala-2.11/taxiservice_2.11-1.0.jar \
+com.yen.TaxiService.App
 ```
+
 ## 3) Run test
 ```bash
 sbt test
