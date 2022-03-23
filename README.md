@@ -76,12 +76,10 @@ sbt test
 
 ## 4) API endpoints
 
-#### `POST /api/book`
-
-Service offers nearest available car to the customer location and return the total time taken to travel from the current car location to customer location then to customer destination.
+#### 4-1) `POST /api/book`
+- ervice offers nearest available car to the customer location and return the total time taken to travel from the current car location to customer location then to customer destination.
 
 ```bash
-# example cmd
 curl -X POST -H "Content-Type: application/json" \
     -d '{
           "source": {
@@ -96,21 +94,27 @@ curl -X POST -H "Content-Type: application/json" \
 http://localhost:8888/api/book
 ```
 
-#### `POST /api/tick`
+#### 4-2) `POST /api/tick`
+- Service offers `/api/tick` REST endpoint, when called should advance your service time stamp by 1 time unit.
 
-Service offers `/api/tick` REST endpoint, when called should advance your service time stamp by 1 time unit.
+```bash
+curl http://localhost:8080/api/tick
+```
 
-#### `PUT /api/reset`
-
-Service offers `/api/reset` REST endpoint, when called will reset all cars data back to the initial state regardless of cars that are currently booked.
+#### 4-3) `PUT /api/reset`
+- Service offers `/api/reset` REST endpoint, when called will reset all cars data back to the initial state regardless of cars that are currently booked.
 
 Run the test cases via below py script check whether your API works correctly
+
+```bash
+curl http://localhost:8080/api/reset
+```
 
 ```python
 python3 basic_solution_checker.py
 ```
 
-#### `Other endpoints`
+#### 4-4) `Other endpoints`
 
 - http://localhost:8080/api/all  : list all cars status
 - http://localhost:8080/api/reset : reset all cars status
