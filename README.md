@@ -10,9 +10,14 @@
   - car status reset
   - time processing
 
-|  #  | API | Type | Purpose | Example cmd | Comment|
+| API | Type | Purpose | Example cmd | Comment|
 | --- | ----- | -------- | ---- | ----- | ---- |
-||1| `POST /api/book` | POST | book a free taxi |cmd | ||
+|| `POST /api/book` | POST | book a free taxi |cmd | ||
+|| `POST /api/tick` | POST | move 1 time unit |`curl http://localhost:8080/api/tick` | ||
+|| `POST /api/book` | POST | book a free taxi |cmd | ||
+|| `POST /api/book` | POST | book a free taxi |cmd | ||
+|| `POST /api/book` | POST | book a free taxi |cmd | ||
+|| `POST /api/book` | POST | book a free taxi |cmd | ||
 
 ## 1) File structure
 
