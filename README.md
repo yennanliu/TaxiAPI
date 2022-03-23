@@ -1,5 +1,9 @@
 # TaxiService
-> A taxi service built via Scala finatra framework
+> A taxi service built via `Scala finatra` framework
+- Use `MVC` model
+    - model : prepare data schema
+    - view  : parse data structure for user interface
+    - controller : handles interaction between user interface and backend
 - Functionality :
   - car booking
   - car status checks
@@ -119,3 +123,8 @@ python3 basic_solution_checker.py
 - http://localhost:8080/api/all  : list all cars status
 - http://localhost:8080/api/reset : reset all cars status
 - http://localhost:9990/admin : service admin UI
+
+## 5) Dependency
+- Java 1.8
+- scala 2.11.8
+- finatra 21.1.0
