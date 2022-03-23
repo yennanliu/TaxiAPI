@@ -1,9 +1,9 @@
 package com.yen.TaxiService.common
 
 import org.scalatest.funsuite.AnyFunSuite
-import com.yen.TaxiService.model.{Car, Location}
-
 import scala.collection.mutable.ListBuffer
+
+import com.yen.TaxiService.model.{Car, Location}
 
 class CommonSuite extends AnyFunSuite{
 

@@ -25,7 +25,7 @@ object taxiController {
 
   // reset endpoint
   class resetStatus extends Controller {
-    get("/api/reset"){
+    post("/api/reset"){
       require:Request =>
         book_service.reset()
     }

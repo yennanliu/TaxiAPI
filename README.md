@@ -14,7 +14,7 @@
 | ----- | -------- | ---- | ----- | ---- |
 | `POST /api/book` | POST | book a free taxi |please check `API endpoints Details` below ||
 | `POST /api/tick` | POST | move 1 time unit forward|`curl http://localhost:8080/api/tick` | |
-| `PUT /api/reset` | PUT | reset taxi booking status|`curl http://localhost:8080/api/reset` | |
+| `POST /api/reset` | POST | reset taxi booking status|curl -X POST http://localhost:8888/api/reset | |
 | `PUT /api/all` | PUT |show all taxi status |`curl http://localhost:8080/api/all` | |
 | `PUT /admin` | PUT | api admin UI|`http://localhost:9990/admin` | |
 
@@ -122,7 +122,7 @@ curl http://localhost:8080/api/tick
 Run the test cases via below py script check whether your API works correctly
 
 ```bash
-curl http://localhost:8080/api/reset
+curl -X POST http://localhost:8888/api/reset
 ```
     
 ```bash

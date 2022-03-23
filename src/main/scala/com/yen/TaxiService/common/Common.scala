@@ -1,8 +1,8 @@
 package com.yen.TaxiService.common
 
-import com.yen.TaxiService.model.{Car, Location}
-
 import scala.collection.mutable.ListBuffer
+
+import com.yen.TaxiService.model.{Car, Location}
 
 /**
  *  Common utils func

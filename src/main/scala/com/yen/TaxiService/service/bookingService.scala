@@ -1,6 +1,7 @@
 package com.yen.TaxiService.service
 
 import scala.collection.mutable.ListBuffer
+
 import com.yen.TaxiService.model.{Location, bookResponse}
 import com.yen.TaxiService.common.Common.{InitCars, getDistance}
 
@@ -21,6 +22,7 @@ class bookingService extends baseService {
       // TODO : optimize below
       val carID = checkNearest(src)
       println(">>> carID = " + carID)
+      // update taxi status (nearest) and update its status to "booked"
       carID match {
         case _ if carID > 0 => {
           val tmpID = carID-1
@@ -31,12 +33,14 @@ class bookingService extends baseService {
           println(s"car ${tmpCar.id} is booked ! : ${tmpCar.toString}")
           bookResponse(carID, this.total_time)
         }
+        // if there is no available taxi
         case _ => {
           println("no available car")
           bookResponse(0, this.total_time)
         }
       }
     }catch{
+      // exception handling
       case e:RuntimeException => {
         e.printStackTrace()
         bookResponse(0, this.total_time)
@@ -54,13 +58,15 @@ class bookingService extends baseService {
                 val dist = getDistance(car.source, expectedSrc)
                 (car.id, dist.toInt)
               }
+              // if there is no available taxi
               case _ => (0,0)
             }
           }
-    }.filter(x => x._1 > 0).sortBy(_._1)
+    }.filter(x => x._1 > 0).sortBy(_._1)  // filter out carID == 0, and sort by distance
 
     println(">>> res = " + res)
 
+    // return valid carID only if there is  available taxi
     if (res.length > 0){
       res(0)._1
     }else{

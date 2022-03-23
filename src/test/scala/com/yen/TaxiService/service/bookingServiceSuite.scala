@@ -1,10 +1,9 @@
 package com.yen.TaxiService.service
 
 import org.scalatest.funsuite.AnyFunSuite
-import com.yen.TaxiService.service.bookingService
-import com.yen.TaxiService.model.{Car, Location, bookResponse}
-
 import scala.collection.mutable.ListBuffer
+
+import com.yen.TaxiService.model.{Car, Location, bookResponse}
 
 class bookingServiceSuite extends AnyFunSuite{
 
