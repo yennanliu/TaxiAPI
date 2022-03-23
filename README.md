@@ -10,7 +10,6 @@
   - car status reset
   - time processing
 
-- Api
 |  #  | API | Type | Purpose | Example cmd | Comment|
 | --- | ----- | -------- | ---- | ----- | ---- |
 ||1| `POST /api/book` | POST | book a free taxi |cmd | ||
