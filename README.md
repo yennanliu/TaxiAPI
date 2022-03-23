@@ -7,6 +7,10 @@
   - time processing
 
 ## 1) File structure
+
+<details>
+<summary>File structure</summary>
+
 ```
 ├── README.md
 ├── build.sbt : build file
@@ -35,7 +39,13 @@ src
                     └── service : service unit test
 ```
 
+</details>
+
 ## 2) Run
+
+<details>
+<summary>Run</summary>
+
 ```bash
 #---------------------------
 # method 1 : intellJ
@@ -57,12 +67,12 @@ sbt assembly
 java -cp \
 target/scala-2.11/taxiservice_2.11-1.0.jar \
 com.yen.TaxiService.App
-```
 
-## 3) Run test
-```bash
+# run test
 sbt test
 ```
+
+</details>
 
 ## 4) API endpoints
 
