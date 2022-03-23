@@ -1,13 +1,13 @@
 # TaxiService
 > A taxi service built via `Scala finatra` framework
-- Use `MVC` model
+- `MVC` model
     - model : prepare data schema
     - view  : parse data structure for user interface
     - controller : handles interaction between user interface and backend
 - Functionality :
-  - car booking
-  - car status checks
-  - car status reset
+  - taxi booking
+  - taxi status checks
+  - taxi status reset
   - time processing
 
 | API | Type | Purpose | Example cmd | Comment|
@@ -124,19 +124,19 @@ Run the test cases via below py script check whether your API works correctly
 ```bash
 curl http://localhost:8080/api/reset
 ```
-
-```python
+    
+```bash
 python3 basic_solution_checker.py
 ```
 
-#### 4-4) `Other endpoints`
+#### 3-4) `Other endpoints`
 
 - http://localhost:8080/api/all  : list all cars status
 - http://localhost:9990/admin : service admin UI
 
 </details>
 
-## 5) Dependency
+## 4) Dependency
 - Java 1.8
 - scala 2.11.8
 - finatra 21.1.0
