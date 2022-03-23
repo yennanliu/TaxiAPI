@@ -10,14 +10,16 @@ import scala.collection.mutable.ListBuffer
 
 object Common {
 
+  // get Manhattan distance between src and dest point
   def getDistance(src:Location, dest:Location):Float = {
 
-    val diffX = (dest.x - src.x)
-    val diffY = (dest.y - src.y)
+    val diffX = (dest.x - src.x).abs
+    val diffY = (dest.y - src.y).abs
 
-    diffX * diffX + diffY * diffY
+    diffX + diffY
   }
 
+  // init cars and their status
   def InitCars():ListBuffer[Car] = {
     // init cars
     var car1 = Car(1, Location(0,0), Location(0,0),true, 0)

@@ -1,9 +1,9 @@
 package com.yen.TaxiService.service
 
-import com.yen.TaxiService.model.{Car, Location, bookResponse}
+import com.yen.TaxiService.model.{Location, bookResponse}
 
 /**
- *  controller trait
+ *  Service trait
  */
 
 trait baseService {

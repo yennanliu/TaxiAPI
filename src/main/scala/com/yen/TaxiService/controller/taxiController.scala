@@ -13,7 +13,7 @@ import com.yen.TaxiService.service.bookingService
 object taxiController {
   val book_service = new bookingService()
 
-  // book
+  // book endpoint
   class book extends Controller {
     post("/api/book"){
       request:bookRequest =>
@@ -23,7 +23,7 @@ object taxiController {
     }
   }
 
-  // reset
+  // reset endpoint
   class resetStatus extends Controller {
     get("/api/reset"){
       require:Request =>
@@ -31,7 +31,7 @@ object taxiController {
     }
   }
 
-  // reset
+  // tick endpoint
   class tickClock extends Controller {
     get("/api/tick"){
       require:Request =>
@@ -39,11 +39,12 @@ object taxiController {
     }
   }
 
-  // listAll
+  // listAll endpoint
   class listAllCar extends Controller {
     get("/api/all"){
       require:Request =>
         book_service.listAll()
     }
   }
+
 }

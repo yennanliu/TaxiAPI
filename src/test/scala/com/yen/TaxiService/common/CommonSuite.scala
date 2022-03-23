@@ -9,10 +9,10 @@ class CommonSuite extends AnyFunSuite{
 
   test("getDistance"){
     val dist1 = Common.getDistance(Location(0,0), Location(3,4))
-    assert(dist1 == 25)
+    assert(dist1 == 7)
 
     val dist2 = Common.getDistance(Location(3,4), Location(0,0))
-    assert(dist2 == 25)
+    assert(dist2 == 7)
 
     val dist3 = Common.getDistance(Location(0,0), Location(0,0))
     assert(dist3 == 0)

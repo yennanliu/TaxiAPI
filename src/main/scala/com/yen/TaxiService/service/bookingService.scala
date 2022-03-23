@@ -1,7 +1,7 @@
 package com.yen.TaxiService.service
 
-import scala.collection.mutable.{ArrayBuffer, ListBuffer}
-import com.yen.TaxiService.model.{Car, Location, bookResponse, eventTime}
+import scala.collection.mutable.ListBuffer
+import com.yen.TaxiService.model.{Location, bookResponse}
 import com.yen.TaxiService.common.Common.{InitCars, getDistance}
 
 /**
@@ -15,6 +15,7 @@ class bookingService extends baseService {
   // init cars
   var cars = InitCars()
 
+  // taxi booking implementation
   override def book(src: Location, dest: Location):bookResponse = {
     try{
       // TODO : optimize below
@@ -43,6 +44,7 @@ class bookingService extends baseService {
     }
   }
 
+  // check nearest available taxi
   override def checkNearest(expectedSrc:Location):Int = {
     // get distance from all cars with src
     var res:ListBuffer[(Int,Int)] = cars.map{
@@ -66,6 +68,7 @@ class bookingService extends baseService {
     }
   }
 
+  // list all taxi
   override def listAll():String = {
     var res = ""
     for (car <- cars){
@@ -74,6 +77,7 @@ class bookingService extends baseService {
     res
   }
 
+  // reset service status
   override def reset(): Unit = {
     try{
       this.cars = InitCars()
@@ -86,6 +90,7 @@ class bookingService extends baseService {
     }
   }
 
+  // update traveling taxi status
   override def updateStatus(): Unit = {
     for (car <- cars){
       if (car.free == false){
@@ -101,6 +106,7 @@ class bookingService extends baseService {
     }
   }
 
+  // implement tick
   override def tick(): Int = {
     this.total_time += 1
     updateStatus()
