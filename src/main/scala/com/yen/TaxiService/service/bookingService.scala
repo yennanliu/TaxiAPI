@@ -31,7 +31,8 @@ class bookingService extends baseService {
           tmpCar.free = false
           this.cars(tmpID) = tmpCar
           println(s"car ${tmpCar.id} is booked ! : ${tmpCar.toString}")
-          bookResponse(carID, this.total_time)
+          val travel_total_time = getDistance(tmpCar.source, tmpCar.destination)
+          bookResponse(carID, travel_total_time.toInt)
         }
         // if there is no available taxi
         case _ => {
@@ -112,7 +113,7 @@ class bookingService extends baseService {
     }
   }
 
-  // implement tick
+  // implement tick (moving time forward)
   override def tick(): Int = {
     this.total_time += 1
     updateStatus()
