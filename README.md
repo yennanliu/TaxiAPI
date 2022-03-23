@@ -10,6 +10,11 @@
   - car status reset
   - time processing
 
+- Api
+|  #  | API | Type | Purpose | Example cmd | Comment|
+| --- | ----- | -------- | ---- | ----- | ---- |
+||1| `POST /api/book` | POST | book a free taxi |cmd | ||
+
 ## 1) File structure
 
 <details>
@@ -78,7 +83,10 @@ sbt test
 
 </details>
 
-## 4) API endpoints
+## 4) API endpoints Details
+
+<details>
+<summary>API endpoints Details</summary>
 
 #### 4-1) `POST /api/book`
 - ervice offers nearest available car to the customer location and return the total time taken to travel from the current car location to customer location then to customer destination.
@@ -123,6 +131,8 @@ python3 basic_solution_checker.py
 - http://localhost:8080/api/all  : list all cars status
 - http://localhost:8080/api/reset : reset all cars status
 - http://localhost:9990/admin : service admin UI
+
+</details>
 
 ## 5) Dependency
 - Java 1.8
