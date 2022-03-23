@@ -77,7 +77,7 @@ sbt run
 sbt assembly
 # run
 java -cp \
-target/scala-2.11/taxiservice_2.11-1.0.jar \
+target/scala-2.11/TaxiService-assembly-1.0.jar \
 com.yen.TaxiService.App
 
 # run test
