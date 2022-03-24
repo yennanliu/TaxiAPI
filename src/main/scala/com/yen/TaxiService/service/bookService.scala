@@ -9,7 +9,7 @@ import com.yen.TaxiService.common.Common.{InitCars, getDistance}
  *  Taxi booking service
  */
 
-class bookingService extends baseService {
+class bookService extends baseService {
 
   // init time
   var total_time = 0

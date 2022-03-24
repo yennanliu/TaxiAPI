@@ -14,7 +14,7 @@
 | ----- | -------- | ---- | ----- | ---- |
 | `POST /api/book` | POST | book a free taxi |please check `API endpoints Details` below ||
 | `POST /api/tick` | POST | move 1 time unit forward|`curl http://localhost:8080/api/tick` | |
-| `POST /api/reset` | POST | reset taxi booking status|curl -X POST http://localhost:8888/api/reset | |
+| `POST /api/reset` | POST | reset taxi booking status|`curl -X POST http://localhost:8888/api/reset` | |
 | `PUT /api/all` | PUT |show all taxi status |`curl http://localhost:8080/api/all` | |
 | `PUT /admin` | PUT | api admin UI|`http://localhost:9990/admin` | |
 
@@ -140,3 +140,9 @@ python3 basic_solution_checker.py
 - Java 1.8
 - scala 2.11.8
 - finatra 21.1.0
+
+## 5) TODO
+- Dockerize
+- refactoring
+- scalability
+- auto generated API doc

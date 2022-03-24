@@ -4,14 +4,14 @@ import com.twitter.finatra.http.Controller
 import com.twitter.finagle.http.Request
 
 import com.yen.TaxiService.model.bookRequest
-import com.yen.TaxiService.service.bookingService
+import com.yen.TaxiService.service.bookService
 
 /**
  *  taxi controller
  */
 
-object taxiController {
-  val book_service = new bookingService()
+object bookController {
+  val book_service = new bookService()
 
   // book endpoint
   class book extends Controller {

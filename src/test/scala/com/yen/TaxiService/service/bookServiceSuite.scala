@@ -5,10 +5,10 @@ import scala.collection.mutable.ListBuffer
 
 import com.yen.TaxiService.model.{Car, Location, bookResponse}
 
-class bookingServiceSuite extends AnyFunSuite{
+class bookServiceSuite extends AnyFunSuite{
 
   test("book"){
-    val book_service = new bookingService()
+    val book_service = new bookService()
 
     val res1 = book_service.book(Location(0,0), Location(5,5))
     //println(book_service.cars)
@@ -28,19 +28,19 @@ class bookingServiceSuite extends AnyFunSuite{
   }
 
   test("checkNearest"){
-    val book_service = new bookingService()
+    val book_service = new bookService()
     val carId1 = book_service.checkNearest(Location(1,1))
     assert(carId1==1)
   }
 
   test("listAll"){
-    val book_service = new bookingService()
+    val book_service = new bookService()
     val expected = "Car(1,Location(0,0),Location(0,0),true,0)Car(2,Location(0,0),Location(0,0),true,0)Car(3,Location(0,0),Location(0,0),true,0)"
     assert(book_service.listAll().replace("\n","") == expected)
   }
 
   test("reset"){
-    val book_service = new bookingService()
+    val book_service = new bookService()
 
     //book_service.cars = ListBuffer(Car(1,Location(0,0),Location(0,0),true,0), Car(2,Location(0,0),Location(0,0),true,0), Car(3,Location(0,0),Location(0,0),true,0))
     assert(book_service.cars == ListBuffer(Car(1,Location(0,0),Location(0,0),true,0), Car(2,Location(0,0),Location(0,0),true,0), Car(3,Location(0,0),Location(0,0),true,0)))
@@ -53,7 +53,7 @@ class bookingServiceSuite extends AnyFunSuite{
   }
 
   test("updateStatus"){
-    val book_service = new bookingService()
+    val book_service = new bookService()
     book_service.updateStatus()
     assert(book_service.cars.filter(x => x.free==false).length == 0)
     book_service.book(Location(1,1), Location(2,2))
@@ -62,7 +62,7 @@ class bookingServiceSuite extends AnyFunSuite{
   }
 
   test("tick"){
-    val book_service = new bookingService()
+    val book_service = new bookService()
     assert (book_service.total_time==0)
     book_service.tick()
     assert (book_service.total_time==1)
