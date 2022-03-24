@@ -80,8 +80,13 @@ java -cp \
 target/scala-2.11/TaxiService-assembly-1.0.jar \
 com.yen.TaxiService.App
 
-# run test
+# tests
+# unit test
 sbt test
+
+# functional test
+# Run the test cases via below py script check whether your API works correctly
+python3 basic_solution_checker.py
 ```
 
 </details>
@@ -92,7 +97,7 @@ sbt test
 <summary>API endpoints Details</summary>
 
 #### 3-1) `POST /api/book`
-- ervice offers nearest available car to the customer location and return the total time taken to travel from the current car location to customer location then to customer destination.
+- Service offers nearest available car to the customer location and return the total time taken to travel from the current car location to customer location then to customer destination.
 
 ```bash
 curl -X POST -H "Content-Type: application/json" \
@@ -119,14 +124,8 @@ curl http://localhost:8080/api/tick
 #### 3-3) `PUT /api/reset`
 - Service offers `/api/reset` REST endpoint, when called will reset all cars data back to the initial state regardless of cars that are currently booked.
 
-Run the test cases via below py script check whether your API works correctly
-
 ```bash
 curl -X POST http://localhost:8888/api/reset
-```
-    
-```bash
-python3 basic_solution_checker.py
 ```
 
 #### 3-4) `Other endpoints`
