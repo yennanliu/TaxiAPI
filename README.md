@@ -86,7 +86,7 @@ sbt test
 
 # functional test
 # Run the test cases via below py script check whether your API works correctly
-python3 basic_solution_checker.py
+python3 script/basic_solution_checker.py
 ```
 
 </details>

@@ -1,6 +1,7 @@
 import requests
 import json
 
+#server_url = 'http://localhost:7777/api'
 server_url = 'http://localhost:8080/api'
 
 
@@ -10,7 +11,7 @@ def tick(n=1):
 
 
 def reset():
-    requests.put(server_url + '/reset')
+    requests.post(server_url + '/reset')
 
 
 def book(source, destination, expected):

@@ -14,6 +14,7 @@ object App extends serviceApp
 
 class serviceApp extends HttpServer{
 
+  //override val defaultHttpsPort: String = ":7777"
   override val defaultHttpsPort: String = ":8080"
 
   override protected def configureHttp(router: HttpRouter): Unit = {
