@@ -28,4 +28,22 @@ object Common {
 
     ListBuffer(car1, car2, car3)
   }
+
+  def InitCarsFromConf():Array[Car] = {
+    // init cars
+    val carFile = "src/main/resources/car.txt"
+    val carInfo = Parse.parseFile(carFile)
+    val carData = carInfo.split("\n")
+    val res = carData.map{
+      data => {
+        val attr = data.split(",")
+        val sourceLocation = Location(attr(1).toInt, attr(2).toInt)
+        val destLocation = Location(attr(3).toInt, attr(4).toInt)
+
+        val tmpCar = Car(attr(0).toInt, sourceLocation, destLocation, attr(5).toBoolean, attr(6).toInt)
+        tmpCar
+      }
+    }
+    res
+  }
 }
