@@ -11,7 +11,7 @@ import com.yen.TaxiService.model.{Car, Location}
 object Common {
 
   // get Manhattan distance between src and dest point
-  def getDistance(src:Location, dest:Location):Float = {
+  def getDistance(src:Location, dest:Location):Int = {
 
     val diffX = (dest.x - src.x).abs
     val diffY = (dest.y - src.y).abs

@@ -7,7 +7,7 @@ import com.yen.TaxiService.model.bookRequest
 import com.yen.TaxiService.service.bookService
 
 /**
- *  taxi controller
+ *  taxi booking controller
  */
 
 object bookController {
