@@ -31,8 +31,11 @@ class bookService extends baseService {
           tmpCar.free = false
           this.cars(tmpID) = tmpCar
           println(s"car ${tmpCar.id} is booked ! : ${tmpCar.toString}")
-          val travel_total_time = getDistance(tmpCar.source, tmpCar.destination)
-          bookResponse(carID, travel_total_time.toInt)
+          // travel time from car init location to booking start location
+          val travel_time_car_src = getDistance(tmpCar.source, src)
+          // travel time from booking start location to booking end location
+          val travel_time_src_dest = getDistance(src, tmpCar.destination)
+          bookResponse(carID, travel_time_car_src + travel_time_src_dest)
         }
         // if there is no available taxi
         case _ => {

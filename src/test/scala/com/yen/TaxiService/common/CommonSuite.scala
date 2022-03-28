@@ -16,6 +16,12 @@ class CommonSuite extends AnyFunSuite{
 
     val dist3 = Common.getDistance(Location(0,0), Location(0,0))
     assert(dist3 == 0)
+
+    val dist4 = Common.getDistance(Location(-1,-1), Location(5,5))
+    assert(dist4 == 12)
+
+    val dist5 = Common.getDistance(Location(-1,-1), Location(-1,-1))
+    assert(dist5 == 0)
   }
 
   test("initCars"){
