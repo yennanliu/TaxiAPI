@@ -145,3 +145,6 @@ curl -X POST http://localhost:8888/api/reset
 - refactoring
 - scalability
 - auto generated API doc
+
+## 6) Ref
+- [finatra tests](https://twitter.github.io/finatra/user-guide/testing/index.html)

@@ -32,7 +32,7 @@ libraryDependencies ++= Seq(
   "com.twitter" %% "finatra-http-server" % versions.finatra % "test" classifier "tests",
   "com.twitter" %% "inject-app" % versions.finatra % "test",
   "com.twitter" %% "inject-core" % versions.finatra % "test",
- "com.twitter" %% "inject-modules" % versions.finatra % "test"
+  "com.twitter" %% "inject-modules" % versions.finatra % "test"
 )
 
 conflictManager := ConflictManager.latestRevision
